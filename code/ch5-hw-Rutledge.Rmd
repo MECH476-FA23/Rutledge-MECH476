@@ -140,21 +140,34 @@ instead of "Cumulative Distribution Plot".
 
 ```{r ozone-hist}
 # create histogram of ozone concentration
+ggplot(data = ozone_data, aes(x = ozone_ppm))+
+  geom_histogram(bins = 40, alpha = 0.6) +
+  labs(title = "Histogram of Ozone Cocentration", 
+       subtitle = "Fort Collins, CO: Jan 2019 - Jan 2020", 
+       x = "Ozone Concentration [ppm]", 
+       y = "Frequency") + 
+  theme_bw()
 ```
 
 ### Question 5: Concept
 
 What mathematical concept is a histogram (Q4) attempting to visualize? 
 
+    It shows the how often a certain range of values shows up in a dataset giving you a visualized overview of the distribution shape, location, and dispersion.
+
 ### Question 6: Distribution
 
 Based on the histogram (Q4), does ozone concentration appear to be normally
 distributed? 
 
+    It is not perfectly normal as it is shifted slightly to the right but it does resemble a normal distribution.
+
 ### Question 7: Outliers
 
 Based on the histogram (Q4), do you see any possible outliers? Skewness? How
 might this affect the spread and central tendency?
+
+    Yes, it appears to have some outliers around 0.00 concentration, as well as along the right tail of the distribution. This disrupts the normal distribution as it skews it slightly right, and the peak around 0.00.
 
 \newpage
 
