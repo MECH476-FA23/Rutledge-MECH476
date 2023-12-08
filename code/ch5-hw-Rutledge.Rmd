@@ -180,6 +180,12 @@ labels to remove the x-axis scale and label.
 
 ```{r ozone-boxplot}
 # create ozone boxplot
+ggplot(data = ozone_data, aes(x="", y=ozone_ppm)) +
+  geom_boxplot(alpha = 0.6) + 
+  labs(title = "Box Plot of Ozone Concentration", 
+       subtitle = "Fort Collins, CO: Jan 2019 - Jan 2020", 
+       y = "Ozone Concentration [ppm]") + 
+  theme_bw()
 ```
 
 \newpage
@@ -196,9 +202,9 @@ could have been done (e.g., `dplyr::filter()` with `%in%` operator).
 # create subset of data with only one day to examine daily pattern
 # I did not ask you to code this because we have not discussed dates or stringr
 # You need to uncomment the below three lines and run it; check object names
-# ozone_day <- ozone_data %>% 
-#   dplyr::filter(stringr::str_detect(string = datetime,
-#                                     pattern = "2019-07-04"))
+ozone_day <- ozone_data %>% 
+dplyr::filter(stringr::str_detect(string = datetime,
+                                  pattern = "2019-07-04"))
 ```
 
 ## Question 9: Autocorrelation Plot
@@ -211,7 +217,13 @@ interest outlined in the coursebook.
 
 ```{r ozone-acf}
 # create autocorrelation plot with ozone_day df
+acplot <- acf(ozone_day$ozone_ppm, 
+              main = "Auto Correlation Plot of Ozone Concentration ", 
+              xlab = "Lag", 
+              ylab = "Coefficient of Autocorrelation", 
+              sub = "Fort Collins, CO: 2019-07-04")
 ```
+
 
 \newpage
 
